@@ -51,15 +51,14 @@ class Notes(Enum):
 # Simple File Explorer for Convenience
 def selectFile():
     # Get the directory of the current Python script
-    currentDir = os.path.dirname(os.path.abspath(__file__))
-    
+    homeDir = os.path.expanduser("~")
     # Create a root window and hide it
     FileExplorerView = tk.Tk()
     FileExplorerView.withdraw()
 
     # Open file dialog with specified initial directory and file types
     filePath = filedialog.askopenfilename(
-        initialdir=currentDir,
+        initialdir=homeDir,
         title="Select a .wav file",
         filetypes=(("WAV files", "*.wav"), ("All files", "*.*"))
     )
